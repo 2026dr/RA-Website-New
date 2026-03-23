@@ -38,7 +38,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 h-16 flex items-center justify-between">
         <a href="#" className="flex-shrink-0">
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="ResaleAgent"
             width={500}
             height={130}

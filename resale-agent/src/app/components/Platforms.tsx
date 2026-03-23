@@ -36,7 +36,7 @@ export default function Platforms() {
             transition={{ duration: 0.6 }}
           >
             <Image
-              src="/visuals/Global_Reach_in_One_Tap_version_1.png"
+              src="/visuals/Global_Reach_in_One_Tap_version_1.webp"
               alt="Sell globally with one tap"
               width={600}
               height={400}

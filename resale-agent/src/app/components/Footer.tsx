@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <a href="#">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="ResaleAgent"
               width={140}
               height={36}

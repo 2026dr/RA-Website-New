@@ -121,7 +121,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <Image
-                src="/visuals/jacket.png"
+                src="/visuals/jacket.webp"
                 alt="Product — Zara Wool Blend Coat"
                 width={400}
                 height={500}

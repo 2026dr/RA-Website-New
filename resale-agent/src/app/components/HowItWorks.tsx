@@ -74,10 +74,12 @@ export default function HowItWorks() {
             >
               <video
                 ref={videoRef}
-                src="/visuals/demo-chat.mov"
+                src="/visuals/demo-chat.mp4"
                 muted
                 loop
                 playsInline
+                preload="none"
+                poster="/visuals/demo-chat-poster.webp"
                 className="w-full aspect-[9/19] object-cover"
               />
 

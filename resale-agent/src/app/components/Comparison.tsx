@@ -73,7 +73,7 @@ export default function Comparison() {
             transition={{ duration: 0.6 }}
           >
             <Image
-              src="/visuals/End_the_manual_data_entry_grind_version_1.png"
+              src="/visuals/End_the_manual_data_entry_grind_version_1.webp"
               alt="End the manual data entry grind"
               width={600}
               height={800}
