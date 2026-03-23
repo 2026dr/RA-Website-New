@@ -60,7 +60,7 @@ export default function Navbar() {
         </div>
 
         <a
-          href="https://t.me/ResaleAgentBot"
+          href="https://t.me/ResaleAgentBot?start=website"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform"
@@ -104,7 +104,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://t.me/ResaleAgentBot"
+            href="https://t.me/ResaleAgentBot?start=website"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-3 bg-primary text-white text-base font-semibold rounded-full"

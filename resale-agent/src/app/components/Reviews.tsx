@@ -1,79 +1,59 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const testimonials = [
   {
-    quote:
-      "I listed my entire sneaker collection in 20 minutes. This used to take me an entire weekend.",
+    quote: "30 pairs in 10 mins. sundays are free now",
     name: "Alex M.",
     role: "Sneaker reseller",
   },
   {
-    quote:
-      "The AI gets the titles right every time. My eBay listings look way more professional now.",
+    quote: "the titles it writes are lowkey better than mine lmao",
     name: "Jordan K.",
     role: "Vintage seller",
   },
   {
-    quote:
-      "Cross-listing from eBay to StockX saved me so much time. Game changer.",
+    quote: "game changer",
     name: "Sam R.",
     role: "Full-time reseller",
   },
   {
     quote:
-      "I was skeptical about AI listings but the descriptions are better than what I write manually.",
+      "I was wrong about AI listings, beacuse the item specifics, titles, descriptions are actually fire",
     name: "Priya T.",
     role: "Thrift flipper",
+    avatar: "/avatars/priya.webp",
   },
   {
-    quote:
-      "Finally something that actually works from my phone. No laptop needed.",
+    quote: "no laptop needed. just my phone on the couch",
     name: "Marcus D.",
     role: "Side hustler",
   },
   {
-    quote:
-      "Listed 40 items in one evening. My Depop is gonna love this when it launches.",
+    quote: "It saves my time a lot, thanks",
     name: "Olivia H.",
     role: "Closet cleaner",
   },
   {
     quote:
-      "The pricing suggestions are spot on. Saves me from having to research comps every time.",
-    name: "Tyler W.",
-    role: "Sneaker reseller",
-  },
-  {
-    quote:
-      "Sold notifications across platforms is the feature I didn't know I needed.",
-    name: "Aisha B.",
-    role: "Multi-platform seller",
-  },
-  {
-    quote:
-      "I switched from List Perfectly and I'm saving $29/month. Plus it's faster.",
+      "i havent typed any detail for listing in weeks and wish I'll never go back to doing it manually",
     name: "Jake F.",
     role: "Full-time reseller",
+    avatar: "/avatars/jake.webp",
   },
   {
-    quote:
-      "My wife sends photos, I hit publish. We cleared out our garage in a week.",
+    quote: "insanely fast",
     name: "Chris L.",
     role: "Casual seller",
   },
   {
     quote:
-      "The StockX integration is seamless. Identifies the exact colorway every time.",
-    name: "Devon R.",
-    role: "Sneaker reseller",
-  },
-  {
-    quote:
-      "I run a vintage shop and this cut my listing time by 80%. Not exaggerating.",
+      "It takes 47 seconds per listing,used to be like 4 minutes",
     name: "Nina S.",
     role: "Vintage store owner",
+    avatar: "/avatars/nina.webp",
   },
 ];
 
@@ -112,9 +92,19 @@ function ReviewCard({ testimonial }: { testimonial: (typeof testimonials)[0] }) 
           {testimonial.quote}
         </p>
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full chrome-gradient flex items-center justify-center">
-            <span className="text-xs font-bold text-white">{initials}</span>
-          </div>
+          {testimonial.avatar ? (
+            <Image
+              src={testimonial.avatar}
+              alt={testimonial.name}
+              width={36}
+              height={36}
+              className="w-9 h-9 rounded-full object-cover"
+            />
+          ) : (
+            <div className="w-9 h-9 rounded-full chrome-gradient flex items-center justify-center">
+              <span className="text-xs font-bold text-white">{initials}</span>
+            </div>
+          )}
           <div>
             <p className="text-sm font-semibold text-heading">
               {testimonial.name}
@@ -128,8 +118,8 @@ function ReviewCard({ testimonial }: { testimonial: (typeof testimonials)[0] }) 
 }
 
 export default function Reviews() {
-  const row1 = testimonials.slice(0, 6);
-  const row2 = testimonials.slice(6, 12);
+  const row1 = testimonials.slice(0, 5);
+  const row2 = testimonials.slice(5, 9);
 
   return (
     <section id="reviews" className="bg-surface py-10 md:py-[60px] overflow-hidden">
@@ -174,12 +164,12 @@ export default function Reviews() {
 
       <div className="flex justify-center mt-12">
         <a
-          href="https://t.me/ResaleAgentBot"
+          href="https://t.me/ResaleAgentBot?start=website"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
         >
-          Join Them — Start Listing
+          Join Them - Start Listing
         </a>
       </div>
     </section>

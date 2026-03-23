@@ -204,7 +204,7 @@ export default function Comparison() {
 
         <div className="flex justify-center mt-12">
           <a
-            href="https://t.me/ResaleAgentBot"
+            href="https://t.me/ResaleAgentBot?start=website"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"

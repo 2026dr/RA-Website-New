@@ -25,7 +25,7 @@ export default function FinalCTA() {
               Your first listings are free. No credit card required.
             </p>
             <a
-              href="https://t.me/ResaleAgentBot"
+              href="https://t.me/ResaleAgentBot?start=website"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-semibold rounded-full text-base sm:text-lg hover:scale-105 transition-transform"

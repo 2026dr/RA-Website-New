@@ -157,7 +157,7 @@ export default function DemoVideo() {
           </div>
 
           <a
-            href="https://t.me/ResaleAgentBot"
+            href="https://t.me/ResaleAgentBot?start=website"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-7 py-3 text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform"

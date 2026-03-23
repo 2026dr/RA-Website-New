@@ -4,8 +4,17 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const FULL_DESCRIPTION =
-  "Brand new with tags, unworn and in perfect condition. Funnel neck with button detail. Single-breasted button front. Cropped relaxed silhouette.";
+const FULL_DESCRIPTION = `Condition: Brand new with tags, unworn and in perfect condition.
+
+Details:
+· Oversized boxy streetwear fit
+· Large back graphic print
+· "Night Drive" car city artwork
+· Short sleeve crew neck style
+· Heavy weight cotton feel
+
+Shipping:
+Fast shipping within 2 business days.`;
 
 const PLATFORMS = ["eBay", "StockX", "Depop", "and more"];
 
@@ -86,7 +95,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-6">
             <a
-              href="https://t.me/ResaleAgentBot"
+              href="https://t.me/ResaleAgentBot?start=website"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
@@ -125,7 +134,7 @@ export default function Hero() {
                 >
                   <Image
                     src="/visuals/jacket.webp"
-                    alt="Product — Zara Wool Blend Coat"
+                    alt="Product — Night Drive Graphic Oversized T-Shirt"
                     width={400}
                     height={500}
                     className="object-contain drop-shadow-lg max-w-[min(400px,85vw)] h-auto w-auto"
@@ -280,7 +289,7 @@ export default function Hero() {
                   Title
                 </p>
                 <p className="text-xs font-semibold text-heading leading-snug">
-                  Wool Blend Short Coat Beige Funnel Neck Button Front
+                  Night Drive Graphic Oversized T-Shirt Unisex Burgundy Streetwear
                 </p>
               </motion.div>
             </motion.div>
@@ -316,7 +325,7 @@ export default function Hero() {
                   Category
                 </p>
                 <p className="text-xs font-semibold text-heading leading-snug">
-                  Outerwear
+                  Tops
                 </p>
               </motion.div>
             </motion.div>
@@ -334,9 +343,9 @@ export default function Hero() {
                   Suggested Price
                 </p>
                 <p className="text-xs font-semibold text-heading leading-snug">
-                  $45
+                  $28
                 </p>
-                <p className="text-[10px] text-body mt-0.5">$35–$60</p>
+                <p className="text-[10px] text-body mt-0.5">$20–$38</p>
               </motion.div>
             </motion.div>
 
@@ -356,9 +365,9 @@ export default function Hero() {
                 </p>
                 <div
                   className="overflow-hidden transition-[max-height] duration-[400ms] ease-in-out"
-                  style={{ maxHeight: descExpanded ? "12rem" : "2rem" }}
+                  style={{ maxHeight: descExpanded ? "20rem" : "2rem" }}
                 >
-                  <p className="text-xs font-semibold text-heading leading-snug">
+                  <p className="text-xs font-semibold text-heading leading-snug whitespace-pre-line">
                     {FULL_DESCRIPTION}
                   </p>
                 </div>
