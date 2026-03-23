@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm install --prefix resale-agent",
+  "buildCommand": "npm run build --prefix resale-agent",
+  "outputDirectory": "resale-agent/out"
+}

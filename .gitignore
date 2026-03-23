@@ -1,2 +1,8 @@
+# Dependencies & build output (never commit)
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
 # Duplicate nested scaffold (not imported by the app; has its own .git history)
 resale-agent/resaleagent-landing/
