@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function FinalCTA() {
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-white py-10 md:py-[60px]">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20">
         <motion.div
           className="bg-heading rounded-3xl px-6 py-12 sm:px-8 sm:py-16 md:px-16 md:py-20 text-center relative overflow-hidden"

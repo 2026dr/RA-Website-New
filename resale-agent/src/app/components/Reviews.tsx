@@ -132,7 +132,7 @@ export default function Reviews() {
   const row2 = testimonials.slice(6, 12);
 
   return (
-    <section id="reviews" className="bg-surface py-20 md:py-28 overflow-hidden">
+    <section id="reviews" className="bg-surface py-10 md:py-[60px] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 mb-12">
         <motion.h2
           className="font-heading text-3xl md:text-4xl font-bold text-heading text-center"
@@ -170,6 +170,17 @@ export default function Reviews() {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="flex justify-center mt-12">
+        <a
+          href="https://t.me/ResaleAgentBot"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
+        >
+          Join Them — Start Listing
+        </a>
       </div>
     </section>
   );

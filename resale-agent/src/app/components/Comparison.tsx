@@ -51,10 +51,10 @@ function CellContent({ value }: { value: CellValue }) {
 
 export default function Comparison() {
   return (
-    <section className="py-20 md:py-28" style={{ background: "#F3F7FB" }}>
+    <section className="py-10 md:py-[60px]" style={{ background: "#F3F7FB" }}>
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20">
         <motion.h2
-          className="font-heading text-3xl md:text-4xl font-bold text-heading text-center mb-16"
+          className="font-heading text-3xl md:text-4xl font-bold text-heading text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -85,10 +85,10 @@ export default function Comparison() {
 
           {/* Right — Comparison table */}
           <div className="w-full lg:w-[60%] min-w-0">
-            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-sm overflow-visible">
               {/* Header row */}
               <div className="grid grid-cols-[1fr_auto_auto_auto]">
-                <div className="p-2 sm:p-4" />
+                <div className="p-2 sm:p-4 rounded-tl-2xl" />
 
                 <div className="w-[72px] sm:w-[110px] md:w-[140px] p-2 sm:p-4 text-center">
                   <span className="text-[10px] sm:text-sm md:text-base font-semibold text-gray-500">
@@ -107,12 +107,13 @@ export default function Comparison() {
 
                 {/* Resale Agent header */}
                 <div
-                  className="w-[72px] sm:w-[110px] md:w-[140px] p-2 sm:p-4 text-center relative"
+                  className="w-[72px] sm:w-[110px] md:w-[140px] p-2 sm:p-4 text-center relative rounded-tr-2xl"
                   style={{
                     background: "#F8F5FF",
                     borderTop: "2px solid #4F35EB",
                     borderLeft: "2px solid #4F35EB",
                     borderRight: "2px solid #4F35EB",
+                    borderTopRightRadius: 12,
                   }}
                 >
                   <div
@@ -170,7 +171,7 @@ export default function Comparison() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: 0.06 * rows.length }}
               >
-                <div className="p-2 sm:p-4 flex items-center">
+                <div className="p-2 sm:p-4 flex items-center rounded-bl-2xl">
                   <span className="text-[11px] sm:text-sm font-semibold text-heading">Time per listing</span>
                 </div>
 
@@ -189,7 +190,7 @@ export default function Comparison() {
                     borderLeft: "2px solid #4F35EB",
                     borderRight: "2px solid #4F35EB",
                     borderBottom: "2px solid #4F35EB",
-                    borderRadius: "0 0 8px 0",
+                    borderRadius: "0 0 16px 0",
                   }}
                 >
                   <span className="text-[10px] sm:text-sm font-bold" style={{ color: "#4F35EB" }}>
@@ -199,6 +200,17 @@ export default function Comparison() {
               </motion.div>
             </div>
           </div>
+        </div>
+
+        <div className="flex justify-center mt-12">
+          <a
+            href="https://t.me/ResaleAgentBot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
+          >
+            Try It for Free
+          </a>
         </div>
       </div>
     </section>

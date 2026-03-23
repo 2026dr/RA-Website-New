@@ -68,7 +68,7 @@ export default function Hero() {
   });
 
   return (
-    <section className="relative bg-white min-h-screen pt-24 pb-16 overflow-hidden">
+    <section className="relative bg-white min-h-[90vh] max-h-screen pt-24 pb-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         {/* Left */}
         <motion.div
@@ -105,30 +105,149 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Right — Product Showcase + Publish */}
+        {/* Right — Product Showcase + Publish (shared width so button aligns with product axis) */}
         <div className="flex-1 flex flex-col items-center w-full">
-          <div className="relative w-full max-w-lg lg:max-w-xl min-h-[580px] scale-[0.65] sm:scale-[0.8] md:scale-100 origin-top -mb-[203px] sm:-mb-[116px] md:mb-0">
+          <div className="w-full max-w-lg lg:max-w-xl -mb-[203px] sm:-mb-[116px] md:mb-0">
+            <div className="relative w-full min-h-[580px] scale-[0.65] sm:scale-[0.8] md:scale-100 origin-top">
             {/* Radial gradient backdrop */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="w-[400px] h-[400px] rounded-full bg-gradient-radial from-gray-100 to-transparent opacity-60" />
             </div>
 
-            {/* Jacket image */}
-            <motion.div
-              className="relative z-10 flex justify-center pt-10"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <Image
-                src="/visuals/jacket.webp"
-                alt="Product — Zara Wool Blend Coat"
-                width={400}
-                height={500}
-                className="object-contain drop-shadow-lg"
-                priority
-              />
-            </motion.div>
+            {/* Garment + publish: w-max column so CTA centers on the product, not the full showcase */}
+            <div className="relative z-10 flex justify-center pt-10 pointer-events-none">
+              <div className="pointer-events-auto flex w-max max-w-full flex-col items-stretch">
+                <motion.div
+                  className="relative mx-auto"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  <Image
+                    src="/visuals/jacket.webp"
+                    alt="Product — Zara Wool Blend Coat"
+                    width={400}
+                    height={500}
+                    className="object-contain drop-shadow-lg max-w-[min(400px,85vw)] h-auto w-auto"
+                    priority
+                  />
+                </motion.div>
+
+                {/* Publish — width matches image column; absolute children centered on garment axis */}
+                <div className="-mt-14 relative z-30 w-full h-[80px] shrink-0 px-1 sm:px-0">
+                  <AnimatePresence mode="wait">
+                    {publishState === "idle" && (
+                      <motion.button
+                        key="publish-idle"
+                        type="button"
+                        onClick={handlePublish}
+                        className="absolute bottom-0 left-1/2 w-max inline-flex items-center justify-center gap-2.5 px-9 py-[14px] bg-white text-[#2D354C] border-[1.5px] border-[#2D354C] rounded-[60px] font-semibold hover:bg-[#2D354C] hover:text-white hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                        initial={{ opacity: 0, scale: 0.9, x: "-50%" }}
+                        animate={{ opacity: 1, scale: 1, x: "-50%" }}
+                        exit={{ opacity: 0, scale: 0.9, x: "-50%" }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2}
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                          />
+                        </svg>
+                        Publish to all marketplaces
+                      </motion.button>
+                    )}
+
+                    {publishState === "publishing" && (
+                      <motion.button
+                        key="publish-loading"
+                        type="button"
+                        disabled
+                        className="absolute bottom-0 left-1/2 w-max inline-flex items-center justify-center gap-2.5 px-9 py-[14px] bg-[#2D354C] text-white border-[1.5px] border-[#2D354C] rounded-[60px] font-semibold opacity-80 cursor-wait"
+                        initial={{ opacity: 0, x: "-50%" }}
+                        animate={{ opacity: 0.9, x: "-50%" }}
+                        exit={{ opacity: 0, x: "-50%" }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <svg
+                          className="w-4 h-4 animate-spin"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
+                        </svg>
+                        Publishing…
+                      </motion.button>
+                    )}
+
+                    {publishState === "success" && (
+                      <motion.div
+                        key="publish-success"
+                        className="absolute bottom-0 left-1/2 w-max max-w-[min(340px,calc(100vw-2rem))] inline-flex items-center gap-3 px-6 py-4 bg-green-50 border border-green-200 rounded-2xl shadow-sm"
+                        initial={{ opacity: 0, scale: 0.8, x: "-50%" }}
+                        animate={{ opacity: 1, scale: 1, x: "-50%" }}
+                        exit={{ opacity: 0, scale: 0.9, x: "-50%" }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        }}
+                      >
+                        <svg
+                          className="w-6 h-6 text-green-600 flex-shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2}
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <div className="text-left min-w-0">
+                          <p className="text-sm font-semibold text-green-800">
+                            Published successfully to
+                          </p>
+                          <p className="flex flex-wrap gap-x-1 mt-0.5">
+                            {PLATFORMS.map((name, i) => (
+                              <motion.span
+                                key={name}
+                                className="text-sm font-medium text-green-700"
+                                initial={{ opacity: 0, y: 4 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 * (i + 1) }}
+                              >
+                                {i < PLATFORMS.length - 2 ? `${name},` : name}
+                              </motion.span>
+                            ))}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </div>
 
             {/* Brand — top-left */}
             <motion.div
@@ -272,114 +391,7 @@ export default function Hero() {
                 }}
               />
             ))}
-          </div>
-
-          {/* Publish to all marketplaces */}
-          <div className="-mt-14 relative z-30 flex justify-center min-h-[56px] w-full px-4 sm:px-0">
-            <AnimatePresence mode="wait">
-              {publishState === "idle" && (
-                <motion.button
-                  key="publish-idle"
-                  onClick={handlePublish}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-[14px] bg-white text-[#2D354C] border-[1.5px] border-[#2D354C] rounded-[60px] font-semibold hover:bg-[#2D354C] hover:text-white hover:scale-105 active:scale-95 transition-all cursor-pointer"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
-                    />
-                  </svg>
-                  Publish to all marketplaces
-                </motion.button>
-              )}
-
-              {publishState === "publishing" && (
-                <motion.button
-                  key="publish-loading"
-                  disabled
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-[14px] bg-[#2D354C] text-white border-[1.5px] border-[#2D354C] rounded-[60px] font-semibold opacity-80 cursor-wait"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.9 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <svg
-                    className="w-4 h-4 animate-spin"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    />
-                  </svg>
-                  Publishing…
-                </motion.button>
-              )}
-
-              {publishState === "success" && (
-                <motion.div
-                  key="publish-success"
-                  className="w-full sm:w-auto inline-flex items-center gap-3 px-6 py-4 bg-green-50 border border-green-200 rounded-2xl shadow-sm"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <svg
-                    className="w-6 h-6 text-green-600 flex-shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <div className="text-left">
-                    <p className="text-sm font-semibold text-green-800">
-                      Published successfully to
-                    </p>
-                    <p className="flex flex-wrap gap-x-1 mt-0.5">
-                      {PLATFORMS.map((name, i) => (
-                        <motion.span
-                          key={name}
-                          className="text-sm font-medium text-green-700"
-                          initial={{ opacity: 0, y: 4 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.2 * (i + 1) }}
-                        >
-                          {i < PLATFORMS.length - 2 ? `${name},` : name}
-                        </motion.span>
-                      ))}
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>

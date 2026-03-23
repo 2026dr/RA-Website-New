@@ -31,6 +31,7 @@ export default function HowItWorks() {
 
   useEffect(() => {
     if (!videoRef.current) return;
+    videoRef.current.muted = true;
     if (isInView) {
       videoRef.current.play().catch(() => {});
       setIsPlaying(true);
@@ -52,7 +53,7 @@ export default function HowItWorks() {
   };
 
   return (
-    <section id="how-it-works" className="bg-white py-20 md:py-28">
+    <section id="how-it-works" className="bg-white py-10 md:py-[60px]">
       <div
         ref={containerRef}
         className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 flex flex-col md:flex-row items-center gap-12 md:gap-16"
@@ -75,12 +76,12 @@ export default function HowItWorks() {
               <video
                 ref={videoRef}
                 src="/visuals/demo-chat.mp4"
-                muted
                 loop
                 playsInline
-                preload="none"
+                preload="metadata"
                 poster="/visuals/demo-chat-poster.webp"
                 className="w-full aspect-[9/19] object-cover"
+                suppressHydrationWarning
               />
 
               <div

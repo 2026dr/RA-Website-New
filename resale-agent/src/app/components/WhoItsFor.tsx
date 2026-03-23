@@ -27,7 +27,7 @@ function posOnCircle(angleDeg: number) {
 
 export default function WhoItsFor() {
   return (
-    <section className="bg-white py-8 md:py-12 overflow-hidden">
+    <section className="bg-white py-10 md:py-[60px] overflow-hidden">
       {/* Mobile: flex-wrap grid */}
       <div className="md:hidden px-6 py-8">
         <motion.div

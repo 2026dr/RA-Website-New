@@ -15,10 +15,10 @@ const platforms = [
 
 export default function Platforms() {
   return (
-    <section id="platforms" className="bg-white py-20 md:py-28">
+    <section id="platforms" className="bg-white py-10 md:py-[60px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20">
         <motion.h2
-          className="font-heading text-3xl md:text-4xl font-bold text-heading text-center mb-16"
+          className="font-heading text-3xl md:text-4xl font-bold text-heading text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -36,10 +36,10 @@ export default function Platforms() {
             transition={{ duration: 0.6 }}
           >
             <Image
-              src="/visuals/Global_Reach_in_One_Tap_version_1.webp"
-              alt="Sell globally with one tap"
-              width={600}
-              height={400}
+              src="/visuals/one-click-all-marketplaces.png"
+              alt="Phone on a glass table showing Digital Acquisitions Confirmed with eBay, Depop, Poshmark, and StockX; headline One Click. All Marketplaces."
+              width={822}
+              height={1024}
               className="w-full object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
