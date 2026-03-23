@@ -1,1 +1,2 @@
-resale-agent/
+# Duplicate nested scaffold (not imported by the app; has its own .git history)
+resale-agent/resaleagent-landing/

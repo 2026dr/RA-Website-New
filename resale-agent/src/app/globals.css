@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  color: #6B7280;
+  background: #FAFAFA;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .chrome-gradient {
+    background: linear-gradient(135deg, #C0C0C0, #F0F0F0, #A0A0A0);
+  }
+  .chrome-text {
+    background: linear-gradient(135deg, #C0C0C0, #F0F0F0, #A0A0A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .chrome-border-shimmer {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(192, 192, 192, 0.3),
+      transparent
+    );
+    background-size: 200% 100%;
+  }
+}
+
+/* ── Orbital animation ── */
+
+@keyframes orbit-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-ccw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.orbit-spin-cw {
+  animation: orbit-cw 40s linear infinite;
+  will-change: transform;
+}
+
+.orbit-spin-ccw {
+  animation: orbit-ccw 60s linear infinite;
+  will-change: transform;
+}
+
+.orbit-counterspin-cw {
+  animation: orbit-ccw 40s linear infinite;
+  will-change: transform;
+}
+
+.orbit-counterspin-ccw {
+  animation: orbit-cw 60s linear infinite;
+  will-change: transform;
+}
+
+.orbit-pill {
+  display: inline-block;
+  white-space: nowrap;
+  background: #ffffff;
+  border: 0.5px solid #E5E7EB;
+  border-radius: 60px;
+  padding: 10px 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  font-size: 14px;
+  font-weight: 500;
+  color: #2D354C;
+  cursor: default;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.orbit-pill:hover {
+  background: #4F35EB;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* ── Scrollbar hide utility ── */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -2,6 +2,7 @@
   "name": "ra-website-new",
   "private": true,
   "scripts": {
+    "postinstall": "npm install --prefix resale-agent",
     "dev": "npm run dev --prefix resale-agent",
     "build": "npm run build --prefix resale-agent",
     "start": "npm run start --prefix resale-agent",
