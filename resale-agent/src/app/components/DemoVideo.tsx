@@ -54,8 +54,9 @@ export default function DemoVideo() {
     <section id="how-it-works" className="bg-white py-10 md:py-[60px]">
       <div
         ref={containerRef}
-        className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 md:gap-16"
+        className="max-w-6xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16"
       >
+        {/* Phone mockup (45%) — DOM-first so it's left on desktop */}
         <motion.div
           className="w-full md:w-[45%] flex justify-center"
           initial={{ opacity: 0, x: -60 }}
@@ -66,9 +67,11 @@ export default function DemoVideo() {
           <div className="relative w-[280px] max-w-[320px] rounded-[40px] border-2 border-gray-900 bg-black p-[6px] shadow-xl">
             <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-[22px] bg-black rounded-full z-10" />
 
-            <div
-              className="relative rounded-[36px] overflow-hidden bg-black cursor-pointer"
+            <button
+              type="button"
+              className="relative rounded-[36px] overflow-hidden bg-black w-full"
               onClick={togglePlay}
+              aria-label="Play or pause demo video"
             >
               <video
                 ref={videoRef}
@@ -106,25 +109,26 @@ export default function DemoVideo() {
                   )}
                 </div>
               </div>
-            </div>
+            </button>
           </div>
         </motion.div>
 
+        {/* Steps content (55%) — DOM-second so it's right on desktop, but top on mobile via flex-col-reverse */}
         <motion.div
-          className="w-full md:w-[55%]"
+          className="w-full md:w-[55%] flex flex-col items-center md:items-start"
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-heading mb-3">
+          <h2 className="font-heading text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-heading mb-3 text-center md:text-left">
             How it works
           </h2>
-          <p className="text-body text-lg leading-relaxed max-w-md mb-10">
+          <p className="text-body text-lg leading-relaxed max-w-md mb-10 text-center md:text-left">
             From photo to published listing in under 60 seconds.
           </p>
 
-          <div className="mb-10">
+          <div className="mb-10 w-fit mx-auto md:mx-0">
             {steps.map((step, i) => (
               <div key={step.number} className="flex items-start gap-4">
                 <div className="flex flex-col items-center">
@@ -160,7 +164,7 @@ export default function DemoVideo() {
             href="https://t.me/ResaleAgentBot?start=website"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-7 py-3 text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform"
+            className="cta-btn inline-flex items-center px-7 py-3 text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform"
             style={{ backgroundColor: "#4F35EB" }}
           >
             Try it yourself

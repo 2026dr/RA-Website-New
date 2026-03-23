@@ -126,10 +126,10 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="bg-white py-10 md:py-[60px]">
+    <section id="features" className="hidden sm:block bg-white py-10 md:py-[60px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20">
         <motion.h2
-          className="font-heading text-3xl md:text-4xl font-bold text-heading text-center mb-10"
+          className="font-heading text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-heading text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -172,7 +172,7 @@ export default function Features() {
             href="https://t.me/ResaleAgentBot?start=website"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
+            className="cta-btn inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
           >
             Start Listing Now
           </a>

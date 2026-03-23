@@ -77,8 +77,8 @@ export default function Hero() {
   });
 
   return (
-    <section className="relative bg-white min-h-[90vh] max-h-screen pt-24 pb-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+    <section className="relative bg-white pt-24 pb-16 [overflow-x:clip]">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
         {/* Left */}
         <motion.div
           className="flex-1 max-w-xl"
@@ -86,25 +86,25 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-heading leading-tight mb-6">
+          <h1 className="font-heading text-[clamp(1.75rem,4vw,3rem)] font-extrabold text-heading leading-tight mb-6">
             Turn product photos into listings in seconds.
           </h1>
           <p className="text-body text-base md:text-lg mb-8 leading-relaxed">
             Upload a photo, let AI generate your listing, and publish instantly
             to resale marketplaces.
           </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center sm:items-start gap-4 mb-6">
             <a
               href="https://t.me/ResaleAgentBot?start=website"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
+              className="cta-btn inline-flex items-center justify-center w-full sm:w-auto max-w-[340px] px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
             >
               Start Listing for Free
             </a>
             <a
               href="#how-it-works"
-              className="inline-flex items-center justify-center px-8 py-3.5 border-[1.5px] border-heading text-heading font-semibold rounded-full hover:scale-105 transition-transform"
+              className="cta-btn inline-flex items-center justify-center w-full sm:w-auto max-w-[340px] px-8 py-3.5 border-[1.5px] border-heading text-heading font-semibold rounded-full hover:scale-105 transition-transform"
             >
               See How It Works
             </a>
@@ -116,8 +116,8 @@ export default function Hero() {
 
         {/* Right — Product Showcase + Publish (shared width so button aligns with product axis) */}
         <div className="flex-1 flex flex-col items-center w-full">
-          <div className="w-full max-w-lg lg:max-w-xl -mb-[203px] sm:-mb-[116px] md:mb-0">
-            <div className="relative w-full min-h-[580px] scale-[0.65] sm:scale-[0.8] md:scale-100 origin-top">
+          <div className="hero-showcase-wrapper w-full max-w-lg lg:max-w-xl -mb-[128px] sm:-mb-[87px] md:-mb-[46px] tablet:mb-0">
+            <div className="hero-showcase relative w-full min-h-[580px] scale-[0.78] sm:scale-[0.85] md:scale-[0.92] tablet:scale-100 origin-top overflow-visible">
             {/* Radial gradient backdrop */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="w-[400px] h-[400px] rounded-full bg-gradient-radial from-gray-100 to-transparent opacity-60" />
@@ -137,7 +137,7 @@ export default function Hero() {
                     alt="Product — Night Drive Graphic Oversized T-Shirt"
                     width={400}
                     height={500}
-                    className="object-contain drop-shadow-lg max-w-[min(400px,85vw)] h-auto w-auto"
+                    className="hero-product-img object-contain drop-shadow-lg max-w-[min(400px,85vw)] h-auto w-auto"
                     priority
                   />
                 </motion.div>
@@ -150,7 +150,7 @@ export default function Hero() {
                         key="publish-idle"
                         type="button"
                         onClick={handlePublish}
-                        className="absolute bottom-0 left-1/2 w-max inline-flex items-center justify-center gap-2.5 px-9 py-[14px] bg-white text-[#2D354C] border-[1.5px] border-[#2D354C] rounded-[60px] font-semibold hover:bg-[#2D354C] hover:text-white hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                        className="hero-publish-btn absolute bottom-0 left-1/2 w-[85%] sm:w-max inline-flex items-center justify-center gap-2.5 px-9 py-[14px] bg-white text-[#2D354C] border-[1.5px] border-[#2D354C] rounded-[60px] font-semibold hover:bg-[#2D354C] hover:text-white hover:scale-105 active:scale-95 transition-all cursor-pointer"
                         initial={{ opacity: 0, scale: 0.9, x: "-50%" }}
                         animate={{ opacity: 1, scale: 1, x: "-50%" }}
                         exit={{ opacity: 0, scale: 0.9, x: "-50%" }}
@@ -178,7 +178,7 @@ export default function Hero() {
                         key="publish-loading"
                         type="button"
                         disabled
-                        className="absolute bottom-0 left-1/2 w-max inline-flex items-center justify-center gap-2.5 px-9 py-[14px] bg-[#2D354C] text-white border-[1.5px] border-[#2D354C] rounded-[60px] font-semibold opacity-80 cursor-wait"
+                        className="hero-publish-btn absolute bottom-0 left-1/2 w-[85%] sm:w-max inline-flex items-center justify-center gap-2.5 px-9 py-[14px] bg-[#2D354C] text-white border-[1.5px] border-[#2D354C] rounded-[60px] font-semibold opacity-80 cursor-wait"
                         initial={{ opacity: 0, x: "-50%" }}
                         animate={{ opacity: 0.9, x: "-50%" }}
                         exit={{ opacity: 0, x: "-50%" }}
@@ -260,7 +260,7 @@ export default function Hero() {
 
             {/* Brand — top-left */}
             <motion.div
-              className={`${cardClass} max-w-[130px]`}
+              className={`${cardClass} hero-tag hero-tag-brand max-w-[130px]`}
               style={{ top: "18%", left: "25%" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -278,7 +278,7 @@ export default function Hero() {
 
             {/* Title — top-right */}
             <motion.div
-              className={`${cardClass} max-w-[220px]`}
+              className={`${cardClass} hero-tag hero-tag-title max-w-[220px]`}
               style={{ top: "10%", right: "3%" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -296,7 +296,7 @@ export default function Hero() {
 
             {/* Condition — left, below Brand */}
             <motion.div
-              className={`${cardClass} max-w-[160px]`}
+              className={`${cardClass} hero-tag hero-tag-condition max-w-[160px]`}
               style={{ top: "38%", left: "3%" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -314,7 +314,7 @@ export default function Hero() {
 
             {/* Category — right, vertically centered */}
             <motion.div
-              className={`${cardClass} max-w-[140px]`}
+              className={`${cardClass} hero-tag hero-tag-category max-w-[140px]`}
               style={{ top: "34%", right: "3%" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -332,7 +332,7 @@ export default function Hero() {
 
             {/* Suggested Price — bottom-left */}
             <motion.div
-              className={`${cardClass} max-w-[150px]`}
+              className={`${cardClass} hero-tag hero-tag-price max-w-[150px]`}
               style={{ bottom: "13%", left: "5%" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -351,7 +351,7 @@ export default function Hero() {
 
             {/* Description — bottom-right, auto-expand */}
             <motion.div
-              className={`${cardClass} max-w-[220px]`}
+              className={`${cardClass} hero-tag hero-tag-desc max-w-[220px]`}
               style={{ bottom: "10%", right: "3%" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

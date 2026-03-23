@@ -28,7 +28,7 @@ export default function FinalCTA() {
               href="https://t.me/ResaleAgentBot?start=website"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-semibold rounded-full text-base sm:text-lg hover:scale-105 transition-transform"
+              className="cta-btn w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-semibold rounded-full text-base sm:text-lg hover:scale-105 transition-transform"
             >
               Start Listing for Free
             </a>

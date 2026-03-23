@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 type CellValue = "yes" | "no" | "partial";
 
@@ -63,28 +62,8 @@ export default function Comparison() {
           Stop wasting time on manual listings
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row gap-10 items-stretch">
-          {/* Left — Image (hidden on mobile/tablet) */}
-          <motion.div
-            className="hidden lg:block lg:w-[40%] flex-shrink-0"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Image
-              src="/visuals/End_the_manual_data_entry_grind_version_1.webp"
-              alt="End the manual data entry grind"
-              width={600}
-              height={800}
-              className="w-full h-full object-cover"
-              style={{ borderRadius: 16 }}
-              sizes="40vw"
-            />
-          </motion.div>
-
-          {/* Right — Comparison table */}
-          <div className="w-full lg:w-[60%] min-w-0">
+        <div className="max-w-3xl mx-auto">
+          <div className="w-full">
             <div className="bg-white rounded-2xl shadow-sm overflow-visible">
               {/* Header row */}
               <div className="grid grid-cols-[1fr_auto_auto_auto]">
@@ -207,7 +186,7 @@ export default function Comparison() {
             href="https://t.me/ResaleAgentBot?start=website"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
+            className="cta-btn inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-semibold rounded-full hover:scale-105 transition-transform"
           >
             Try It for Free
           </a>

@@ -18,7 +18,7 @@ export default function Platforms() {
     <section id="platforms" className="bg-white py-10 md:py-[60px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20">
         <motion.h2
-          className="font-heading text-3xl md:text-4xl font-bold text-heading text-center mb-10"
+          className="font-heading text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-heading text-center mb-3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -26,17 +26,28 @@ export default function Platforms() {
         >
           Sell on the platforms you already use
         </motion.h2>
+        <motion.p
+          className="text-body text-base md:text-lg text-center mb-10 max-w-lg mx-auto"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          List to multiple marketplaces at once — no switching tabs, no copy-pasting.
+        </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Desktop: image left, platforms right | Mobile: stacked */}
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          {/* Image */}
           <motion.div
-            className="relative rounded-2xl overflow-hidden shadow-lg"
+            className="relative rounded-2xl overflow-hidden shadow-lg w-full md:w-1/2"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             <Image
-              src="/visuals/one-click-all-marketplaces.png"
+              src="/visuals/one-click-all-marketplaces.webp"
               alt="Phone on a glass table showing Digital Acquisitions Confirmed with eBay, Depop, Poshmark, and StockX; headline One Click. All Marketplaces."
               width={822}
               height={1024}
@@ -45,12 +56,13 @@ export default function Platforms() {
             />
           </motion.div>
 
+          {/* Platform list — single column */}
           <motion.div
-            className="space-y-4"
+            className="flex flex-col gap-3 w-full md:w-1/2"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             {platforms.map((platform, i) => (
               <motion.div
@@ -59,7 +71,7 @@ export default function Platforms() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 * i }}
+                transition={{ duration: 0.4, delay: 0.08 * i }}
                 whileHover={{ scale: 1.02 }}
               >
                 <span className="font-semibold text-heading">

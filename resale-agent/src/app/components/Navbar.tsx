@@ -36,7 +36,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20 h-16 flex items-center justify-between">
-        <a href="#" className="flex-shrink-0">
+        <a href="/" className="flex-shrink-0">
           <Image
             src="/logo.webp"
             alt="ResaleAgent"
@@ -47,7 +47,7 @@ export default function Navbar() {
           />
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden tablet:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -63,14 +63,15 @@ export default function Navbar() {
           href="https://t.me/ResaleAgentBot?start=website"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform"
+          className="hidden tablet:inline-flex items-center px-6 py-2.5 bg-primary text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform"
         >
           Start Listing
         </a>
 
         <button
+          type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="tablet:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
         >
           <span
@@ -92,7 +93,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-white z-50 flex flex-col items-center justify-center gap-8">
+        <div className="tablet:hidden fixed inset-0 top-16 bg-white z-50 flex flex-col items-center justify-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -107,7 +108,7 @@ export default function Navbar() {
             href="https://t.me/ResaleAgentBot?start=website"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-3 bg-primary text-white text-base font-semibold rounded-full"
+            className="cta-btn inline-flex items-center px-8 py-3 bg-primary text-white text-base font-semibold rounded-full"
           >
             Start Listing
           </a>

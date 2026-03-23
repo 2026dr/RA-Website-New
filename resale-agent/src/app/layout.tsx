@@ -18,6 +18,28 @@ export const metadata: Metadata = {
   title: "ResaleAgent — AI-Powered Marketplace Listings",
   description:
     "Turn product photos into listings in seconds. Upload a photo, let AI generate your listing, and publish instantly to resale marketplaces.",
+  openGraph: {
+    title: "ResaleAgent — AI-Powered Marketplace Listings",
+    description:
+      "Turn product photos into listings in seconds. Upload a photo, let AI generate your listing, and publish instantly to resale marketplaces.",
+    url: "https://resaleagent.ai",
+    siteName: "ResaleAgent",
+    images: [
+      {
+        url: "/visuals/End_the_manual_data_entry_grind_version_1.webp",
+        width: 1200,
+        height: 630,
+        alt: "ResaleAgent — AI-Powered Marketplace Listings",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ResaleAgent — AI-Powered Marketplace Listings",
+    description:
+      "Turn product photos into listings in seconds. Upload a photo, let AI generate your listing, and publish instantly to resale marketplaces.",
+  },
 };
 
 export default function RootLayout({

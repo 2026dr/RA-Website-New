@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="bg-white border-t border-border py-12">
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <a href="#">
+          <a href="/">
             <Image
               src="/logo.webp"
               alt="ResaleAgent"
@@ -24,17 +24,19 @@ export default function Footer() {
             />
           </a>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-body hover:text-heading transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+          <nav aria-label="Footer">
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-body hover:text-heading transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </nav>
 
           <div className="flex items-center gap-4">
             {/* Telegram */}
