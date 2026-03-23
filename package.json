@@ -1,0 +1,11 @@
+{
+  "name": "ra-website-new",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix resale-agent",
+    "build": "npm run build --prefix resale-agent",
+    "start": "npm run start --prefix resale-agent",
+    "lint": "npm run lint --prefix resale-agent",
+    "install:app": "npm install --prefix resale-agent"
+  }
+}
