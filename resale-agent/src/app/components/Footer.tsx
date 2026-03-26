@@ -61,6 +61,8 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <a
               href="/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs text-body hover:text-heading transition-colors"
             >
               Privacy Policy
@@ -68,9 +70,20 @@ export default function Footer() {
             <span className="text-xs text-border">·</span>
             <a
               href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs text-body hover:text-heading transition-colors"
             >
               Terms of Service
+            </a>
+            <span className="text-xs text-border">·</span>
+            <a
+              href="/faq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-body hover:text-heading transition-colors"
+            >
+              FAQ
             </a>
           </div>
         </div>
