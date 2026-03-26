@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
+import Preloader from "./components/Preloader";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${beVietnamPro.variable} font-sans antialiased`}
       >
+        <Preloader />
         {children}
       </body>
     </html>

@@ -3,10 +3,10 @@
 import Image from "next/image";
 
 const links = [
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Features", href: "#features" },
-  { label: "Platforms", href: "#platforms" },
-  { label: "Reviews", href: "#reviews" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Features", href: "/#features" },
+  { label: "Platforms", href: "/#platforms" },
+  { label: "Reviews", href: "/#reviews" },
 ];
 
 export default function Footer() {
