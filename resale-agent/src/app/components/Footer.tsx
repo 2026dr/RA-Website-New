@@ -54,10 +54,25 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-border text-center">
+        <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-body">
             &copy; 2026 ResaleAgent. All rights reserved.
           </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="/privacy"
+              className="text-xs text-body hover:text-heading transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <span className="text-xs text-border">·</span>
+            <a
+              href="/terms"
+              className="text-xs text-body hover:text-heading transition-colors"
+            >
+              Terms of Service
+            </a>
+          </div>
         </div>
       </div>
     </footer>
