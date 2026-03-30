@@ -15,6 +15,8 @@ const rows: ComparisonRow[] = [
   { feature: "AI product identification", manual: "no", other: "partial", ra: "yes" },
   { feature: "Auto-generated title", manual: "no", other: "no", ra: "yes" },
   { feature: "Auto-generated description", manual: "no", other: "no", ra: "yes" },
+  { feature: "Background removal", manual: "no", other: "partial", ra: "yes" },
+  { feature: "AI try-on model", manual: "no", other: "no", ra: "yes" },
   { feature: "Smart pricing suggestion", manual: "no", other: "no", ra: "yes" },
   { feature: "Cross-listing", manual: "no", other: "yes", ra: "yes" },
   { feature: "Sold notifications", manual: "no", other: "yes", ra: "yes" },
