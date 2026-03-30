@@ -42,7 +42,7 @@ Details:
 
 Shipping:
 Fast shipping within 2 business days.`,
-    imageScale: 1.4,
+    imageScale: 1.26,
   },
   {
     image: "/visuals/chanel.png",
