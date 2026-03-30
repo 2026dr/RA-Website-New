@@ -287,7 +287,7 @@ export default function Hero() {
                   {/* Brand — top-left */}
                   <div
                     className={`${cardClass} hero-tag hero-tag-brand max-w-[130px]`}
-                    style={{ top: "18%", left: "25%" }}
+                    style={{ top: "13%", left: "25%" }}
                   >
                     <motion.div animate={floatAnim} transition={floatTrans(0)}>
                       <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
@@ -302,7 +302,7 @@ export default function Hero() {
                   {/* Title — top-right */}
                   <div
                     className={`${cardClass} hero-tag hero-tag-title max-w-[220px]`}
-                    style={{ top: "10%", right: "3%" }}
+                    style={{ top: "5%", right: "3%" }}
                   >
                     <motion.div animate={floatAnim} transition={floatTrans(0.5)}>
                       <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
@@ -317,7 +317,7 @@ export default function Hero() {
                   {/* Condition — left, below Brand */}
                   <div
                     className={`${cardClass} hero-tag hero-tag-condition max-w-[160px]`}
-                    style={{ top: "38%", left: "3%" }}
+                    style={{ top: "33%", left: "3%" }}
                   >
                     <motion.div animate={floatAnim} transition={floatTrans(1)}>
                       <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
@@ -338,7 +338,7 @@ export default function Hero() {
                   {/* Category — right, vertically centered */}
                   <div
                     className={`${cardClass} hero-tag hero-tag-category max-w-[140px]`}
-                    style={{ top: "34%", right: "3%" }}
+                    style={{ top: "29%", right: "3%" }}
                   >
                     <motion.div animate={floatAnim} transition={floatTrans(1.5)}>
                       <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
@@ -353,7 +353,7 @@ export default function Hero() {
                   {/* Suggested Price — bottom-left */}
                   <div
                     className={`${cardClass} hero-tag hero-tag-price max-w-[150px]`}
-                    style={{ bottom: "13%", left: "5%" }}
+                    style={{ bottom: "18%", left: "5%" }}
                   >
                     <motion.div animate={floatAnim} transition={floatTrans(0.3)}>
                       <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
@@ -373,7 +373,7 @@ export default function Hero() {
                   {/* Description — bottom-right, auto-expand */}
                   <div
                     className={`${cardClass} hero-tag hero-tag-desc max-w-[220px]`}
-                    style={{ bottom: "10%", right: "3%" }}
+                    style={{ bottom: "15%", right: "3%" }}
                     onMouseEnter={() => setDescHovered(true)}
                     onMouseLeave={() => setDescHovered(false)}
                   >
