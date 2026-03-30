@@ -16,6 +16,7 @@ interface ProductData {
   price: string;
   priceRange: string;
   description: string;
+  imageScale: number;
 }
 
 const PRODUCTS: ProductData[] = [
@@ -41,6 +42,7 @@ Details:
 
 Shipping:
 Fast shipping within 2 business days.`,
+    imageScale: 1.4,
   },
   {
     image: "/visuals/chanel.png",
@@ -65,6 +67,7 @@ Details:
 
 Shipping:
 Fast shipping within 2 business days.`,
+    imageScale: 1.2,
   },
   {
     image: "/visuals/hermes.png",
@@ -88,6 +91,7 @@ Details:
 
 Shipping:
 Fast shipping within 2 business days.`,
+    imageScale: 1.2,
   },
   {
     image: "/visuals/jacket.webp",
@@ -111,19 +115,13 @@ Details:
 
 Shipping:
 Fast shipping within 2 business days.`,
+    imageScale: 1.4,
   },
 ];
 
 const PLATFORMS = ["eBay", "StockX", "Depop", "and more"];
 
 const ROTATION_INTERVAL = 6000;
-
-const textFade = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 0.5 },
-};
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -259,33 +257,148 @@ export default function Hero() {
                 <div className="w-[400px] h-[400px] rounded-full bg-gradient-radial from-gray-100 to-transparent opacity-60" />
               </div>
 
-              {/* Product image + publish */}
-              <div className="relative z-10 flex justify-center pt-10 pointer-events-none">
-                <div className="pointer-events-auto flex w-max max-w-full flex-col items-stretch">
-                  <div className="relative mx-auto w-[min(400px,85vw)] h-[500px]">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={`product-img-${activeIndex}`}
-                        className="absolute inset-0 flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                      >
+              {/* Product image + card tags — crossfade together */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  className="absolute inset-0 overflow-visible"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {/* Product image */}
+                  <div className="relative z-10 flex justify-center pt-10 pointer-events-none">
+                    <div className="pointer-events-auto">
+                      <div className="relative mx-auto w-[min(400px,85vw)] h-[500px] flex items-center justify-center">
                         <Image
                           src={product.image}
                           alt={product.alt}
                           width={400}
                           height={500}
                           className="hero-product-img object-contain drop-shadow-lg w-full h-full"
+                          style={{ transform: `scale(${product.imageScale})` }}
                           priority={activeIndex === 0}
                         />
-                      </motion.div>
-                    </AnimatePresence>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Publish button — stays static */}
-                  <div className="-mt-14 relative z-30 w-full h-[80px] shrink-0 px-1 sm:px-0">
+                  {/* Brand — top-left */}
+                  <div
+                    className={`${cardClass} hero-tag hero-tag-brand max-w-[130px]`}
+                    style={{ top: "18%", left: "25%" }}
+                  >
+                    <motion.div animate={floatAnim} transition={floatTrans(0)}>
+                      <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
+                        Brand
+                      </p>
+                      <p className="text-xs font-semibold text-heading leading-snug">
+                        {product.brand}
+                      </p>
+                    </motion.div>
+                  </div>
+
+                  {/* Title — top-right */}
+                  <div
+                    className={`${cardClass} hero-tag hero-tag-title max-w-[220px]`}
+                    style={{ top: "10%", right: "3%" }}
+                  >
+                    <motion.div animate={floatAnim} transition={floatTrans(0.5)}>
+                      <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
+                        Title
+                      </p>
+                      <p className="text-xs font-semibold text-heading leading-snug">
+                        {product.title}
+                      </p>
+                    </motion.div>
+                  </div>
+
+                  {/* Condition — left, below Brand */}
+                  <div
+                    className={`${cardClass} hero-tag hero-tag-condition max-w-[160px]`}
+                    style={{ top: "38%", left: "3%" }}
+                  >
+                    <motion.div animate={floatAnim} transition={floatTrans(1)}>
+                      <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
+                        Condition
+                      </p>
+                      <span
+                        className="inline-block text-xs font-semibold px-2 py-0.5 rounded-full"
+                        style={{
+                          backgroundColor: product.conditionBg,
+                          color: product.conditionText,
+                        }}
+                      >
+                        {product.condition}
+                      </span>
+                    </motion.div>
+                  </div>
+
+                  {/* Category — right, vertically centered */}
+                  <div
+                    className={`${cardClass} hero-tag hero-tag-category max-w-[140px]`}
+                    style={{ top: "34%", right: "3%" }}
+                  >
+                    <motion.div animate={floatAnim} transition={floatTrans(1.5)}>
+                      <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
+                        Category
+                      </p>
+                      <p className="text-xs font-semibold text-heading leading-snug">
+                        {product.category}
+                      </p>
+                    </motion.div>
+                  </div>
+
+                  {/* Suggested Price — bottom-left */}
+                  <div
+                    className={`${cardClass} hero-tag hero-tag-price max-w-[150px]`}
+                    style={{ bottom: "13%", left: "5%" }}
+                  >
+                    <motion.div animate={floatAnim} transition={floatTrans(0.3)}>
+                      <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
+                        Suggested Price
+                      </p>
+                      <div>
+                        <p className="text-xs font-semibold text-heading leading-snug">
+                          {product.price}
+                        </p>
+                        <p className="text-[10px] text-body mt-0.5">
+                          {product.priceRange}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Description — bottom-right, auto-expand */}
+                  <div
+                    className={`${cardClass} hero-tag hero-tag-desc max-w-[220px]`}
+                    style={{ bottom: "10%", right: "3%" }}
+                    onMouseEnter={() => setDescHovered(true)}
+                    onMouseLeave={() => setDescHovered(false)}
+                  >
+                    <motion.div animate={floatAnim} transition={floatTrans(0.8)}>
+                      <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
+                        Description
+                      </p>
+                      <div
+                        className="overflow-hidden transition-[max-height] duration-[400ms] ease-in-out"
+                        style={{ maxHeight: descExpanded ? "20rem" : "2rem" }}
+                      >
+                        <p className="text-xs font-semibold text-heading leading-snug whitespace-pre-line">
+                          {product.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Publish button + dots — static, don't fade */}
+              <div className="relative z-30 flex justify-center pt-10 pointer-events-none">
+                <div className="pointer-events-auto flex flex-col items-center w-[min(400px,85vw)]">
+                  <div className="h-[500px]" />
+                  <div className="-mt-14 relative w-full h-[80px] shrink-0 px-1 sm:px-0">
                     <AnimatePresence mode="wait">
                       {publishState === "idle" && (
                         <motion.button
@@ -399,181 +512,25 @@ export default function Hero() {
                       )}
                     </AnimatePresence>
                   </div>
+
+                  {/* Dot indicators */}
+                  <div className="mt-4 flex items-center gap-2">
+                    {PRODUCTS.map((_, idx) => (
+                      <button
+                        key={`dot-${idx}`}
+                        type="button"
+                        onClick={() => goToIndex(idx)}
+                        className="w-2.5 h-2.5 rounded-full transition-colors duration-300 cursor-pointer"
+                        style={{
+                          backgroundColor:
+                            idx === activeIndex ? "#4F35EB" : "#D1D5DB",
+                        }}
+                        aria-label={`Go to product ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              {/* Dot indicators */}
-              <div className="absolute bottom-[2%] left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
-                {PRODUCTS.map((_, idx) => (
-                  <button
-                    key={`dot-${idx}`}
-                    type="button"
-                    onClick={() => goToIndex(idx)}
-                    className="w-2.5 h-2.5 rounded-full transition-colors duration-300 cursor-pointer"
-                    style={{
-                      backgroundColor:
-                        idx === activeIndex ? "#4F35EB" : "#D1D5DB",
-                    }}
-                    aria-label={`Go to product ${idx + 1}`}
-                  />
-                ))}
-              </div>
-
-              {/* Brand — top-left */}
-              <motion.div
-                className={`${cardClass} hero-tag hero-tag-brand max-w-[130px]`}
-                style={{ top: "18%", left: "25%" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                <motion.div animate={floatAnim} transition={floatTrans(0)}>
-                  <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
-                    Brand
-                  </p>
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={`brand-${activeIndex}`}
-                      className="text-xs font-semibold text-heading leading-snug"
-                      {...textFade}
-                    >
-                      {product.brand}
-                    </motion.p>
-                  </AnimatePresence>
-                </motion.div>
-              </motion.div>
-
-              {/* Title — top-right */}
-              <motion.div
-                className={`${cardClass} hero-tag hero-tag-title max-w-[220px]`}
-                style={{ top: "10%", right: "3%" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-              >
-                <motion.div animate={floatAnim} transition={floatTrans(0.5)}>
-                  <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
-                    Title
-                  </p>
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={`title-${activeIndex}`}
-                      className="text-xs font-semibold text-heading leading-snug"
-                      {...textFade}
-                    >
-                      {product.title}
-                    </motion.p>
-                  </AnimatePresence>
-                </motion.div>
-              </motion.div>
-
-              {/* Condition — left, below Brand */}
-              <motion.div
-                className={`${cardClass} hero-tag hero-tag-condition max-w-[160px]`}
-                style={{ top: "38%", left: "3%" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-              >
-                <motion.div animate={floatAnim} transition={floatTrans(1)}>
-                  <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
-                    Condition
-                  </p>
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={`condition-${activeIndex}`}
-                      className="inline-block text-xs font-semibold px-2 py-0.5 rounded-full"
-                      style={{
-                        backgroundColor: product.conditionBg,
-                        color: product.conditionText,
-                      }}
-                      {...textFade}
-                    >
-                      {product.condition}
-                    </motion.span>
-                  </AnimatePresence>
-                </motion.div>
-              </motion.div>
-
-              {/* Category — right, vertically centered */}
-              <motion.div
-                className={`${cardClass} hero-tag hero-tag-category max-w-[140px]`}
-                style={{ top: "34%", right: "3%" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-              >
-                <motion.div animate={floatAnim} transition={floatTrans(1.5)}>
-                  <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
-                    Category
-                  </p>
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={`category-${activeIndex}`}
-                      className="text-xs font-semibold text-heading leading-snug"
-                      {...textFade}
-                    >
-                      {product.category}
-                    </motion.p>
-                  </AnimatePresence>
-                </motion.div>
-              </motion.div>
-
-              {/* Suggested Price — bottom-left */}
-              <motion.div
-                className={`${cardClass} hero-tag hero-tag-price max-w-[150px]`}
-                style={{ bottom: "13%", left: "5%" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.3 }}
-              >
-                <motion.div animate={floatAnim} transition={floatTrans(0.3)}>
-                  <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
-                    Suggested Price
-                  </p>
-                  <AnimatePresence mode="wait">
-                    <motion.div key={`price-${activeIndex}`} {...textFade}>
-                      <p className="text-xs font-semibold text-heading leading-snug">
-                        {product.price}
-                      </p>
-                      <p className="text-[10px] text-body mt-0.5">
-                        {product.priceRange}
-                      </p>
-                    </motion.div>
-                  </AnimatePresence>
-                </motion.div>
-              </motion.div>
-
-              {/* Description — bottom-right, auto-expand */}
-              <motion.div
-                className={`${cardClass} hero-tag hero-tag-desc max-w-[220px]`}
-                style={{ bottom: "10%", right: "3%" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.5 }}
-                onMouseEnter={() => setDescHovered(true)}
-                onMouseLeave={() => setDescHovered(false)}
-              >
-                <motion.div animate={floatAnim} transition={floatTrans(0.8)}>
-                  <p className="text-[10px] font-medium text-trust uppercase tracking-wider mb-1">
-                    Description
-                  </p>
-                  <div
-                    className="overflow-hidden transition-[max-height] duration-[400ms] ease-in-out"
-                    style={{ maxHeight: descExpanded ? "20rem" : "2rem" }}
-                  >
-                    <AnimatePresence mode="wait">
-                      <motion.p
-                        key={`desc-${activeIndex}`}
-                        className="text-xs font-semibold text-heading leading-snug whitespace-pre-line"
-                        {...textFade}
-                      >
-                        {product.description}
-                      </motion.p>
-                    </AnimatePresence>
-                  </div>
-                </motion.div>
-              </motion.div>
 
               {/* Chrome particles */}
               {[
